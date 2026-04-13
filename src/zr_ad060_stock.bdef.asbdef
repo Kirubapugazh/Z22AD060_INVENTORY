@@ -1,0 +1,54 @@
+managed implementation in class ZBP_R_AD060_STOCK unique;
+strict ( 2 );
+with draft;
+extensible;
+define behavior for ZR_AD060_STOCK alias ZrAd060Stock
+persistent table ZAD060_STOCK
+extensible
+draft table ZAD060_STOCK_D
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master( global )
+{
+  field ( mandatory : create )
+   ProductID;
+
+  field ( readonly )
+   CreatedBy,
+   CreatedAt,
+   LastChangedBy,
+   LastChangedAt,
+   LocalLastChangedAt;
+
+  field ( readonly : update )
+   ProductID;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZAD060_STOCK corresponding extensible
+  {
+    ProductID = PRODUCT_ID;
+    ProductName = PRODUCT_NAME;
+    Category = CATEGORY;
+    Quantity = QUANTITY;
+    Unit = UNIT;
+    MinStockLevel = MIN_STOCK_LEVEL;
+    Price = PRICE;
+    Currency = CURRENCY;
+    CreatedBy = CREATED_BY;
+    CreatedAt = CREATED_AT;
+    LastChangedBy = LAST_CHANGED_BY;
+    LastChangedAt = LAST_CHANGED_AT;
+    LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+  }
+
+}

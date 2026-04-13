@@ -1,0 +1,11 @@
+@EndUserText: {
+  label: 'Service Definition for ZC_AD060_STOCK'
+}
+@ObjectModel: {
+  leadingEntity: {
+    name: 'ZC_AD060_STOCK'
+  }
+}
+define service ZUI_ZAD060_STOCK_O4 provider contracts odata_v4_ui {
+  expose ZC_AD060_STOCK;
+}
